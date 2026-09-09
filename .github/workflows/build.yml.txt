@@ -1,0 +1,26 @@
+name: .NET Build CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Pobranie kodu (Checkout)
+      uses: actions/checkout@v4
+    
+    - name: Instalacja środowiska .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Pobranie pakietów (Restore)
+      run: dotnet restore
+    
+    - name: Kompilacja projektu (Build)
+      run: dotnet build --no-restore --configuration Release
