@@ -15,8 +15,21 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <TextBox Text="{Binding Greeting}"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center" />
+    <!-- StackPanel układa kontrolki z góry na dół, jedna pod drugą -->
+<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+    
+    <!-- Pole tekstowe podpięte pod naszą zmienną (ConnectionStatus) -->
+    <TextBlock Text="{Binding ConnectionStatus}" 
+               FontSize="24" 
+               FontWeight="Bold"
+               HorizontalAlignment="Center" />
+
+    <!-- Przycisk podpięty pod wygenerowaną komendę (ConnectToDeviceCommand) -->
+    <Button Content="Połącz z symulatorem"
+            Command="{Binding ConnectToDeviceCommand}"
+            Padding="15, 10"
+            HorizontalAlignment="Center" />
+            
+</StackPanel>
 
 </Window>
